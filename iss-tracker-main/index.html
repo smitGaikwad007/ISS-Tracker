@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ISS Tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Track the real-time location of the International Space Station!"
+    />
+    <meta name="theme-color" content="#000203" />
+    <meta name="image" content="https://iss.dalvanc.com/assets/og-banner.png" />
+    <meta property="og:title" content="ISS Tracker" />
+    <meta
+      property="og:description"
+      content="Track the real-time location of the International Space Station!"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://iss.dalvanc.com/" />
+    <meta property="og:site_name" content="ISS Tracker" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="675" />
+    <meta property="og:image" content="https://iss.dalvanc.com/assets/og-banner.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="twitter:title" content="ISS Tracker" />
+    <meta
+      property="twitter:description"
+      content="Track the real-time location of the International Space Station!"
+    />
+    <meta property="twitter:creator" content="@theRealZackyV" />
+    <meta property="twitter:site" content="@theRealZackyV" />
+    <meta property="twitter:url" content="https://iss.dalvanc.com/" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:image"
+      content="https://iss.dalvanc.com/assets/og-banner.png"
+    />
+    <link rel="canonical" href="https://iss.dalvanc.com/" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+      defer
+    ></script>
+    <script src="./app.js" defer></script>
+  </head>
+
+  <body>
+    <main>
+      <h1>ISS Tracker</h1>
+      <p class="subtitle">
+        Track the location of the
+        <span>International Space Station!</span>
+      </p>
+      <div id="map"></div>
+      <div class="panel">
+        <div class="info">
+          <div class="title-wrapper">
+            <div class="led-wrapper">
+              <div class="led"></div>
+              <div class="led2 animate-ping"></div>
+            </div>
+            <h2>Real-time information</h2>
+          </div>
+          <div class="topics">
+            <ul>
+              <li class="topic">
+                <img class="icon" src="./assets/icons/latitude.png" alt="Latitude icon" />
+                <p>Latitude: <span class="lat">...</span></p>
+              </li>
+              <li class="topic">
+                <img
+                  class="icon"
+                  src="./assets/icons/longitude.png"
+                  alt="Longitude icon"
+                />
+                <p>Longitude: <span class="lon">...</span></p>
+              </li>
+              <li class="topic">
+                <img class="icon" src="./assets/icons/altitude.png" alt="Altitude icon" />
+                <p>Altitude: <span class="alt">...</span></p>
+              </li>
+              <li class="topic">
+                <img class="icon" src="./assets/icons/speed.png" alt="Speed icon" />
+                <p>Orbital speed: <span class="spd">...</span></p>
+              </li>
+            </ul>
+            <div class="links">
+              <div class="link">
+                <img class="icon" src="./assets/icons/link.png" alt="Link icon" />
+                <a
+                  href="https://www.nasa.gov/international-space-station/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Learn more about the ISS...
+                </a>
+              </div>
+              <div class="link">
+                <img class="icon" src="/assets/github-logo.svg" alt="GitHub logo" />
+                <a
+                  href="https://github.com/dalvancarvalho/iss-tracker"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  GitHub repository
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="settings">
+          <div class="title-wrapper">
+            <img class="icon" src="./assets/icons/settings.png" alt="Settings icon" />
+            <h2>Settings</h2>
+          </div>
+          <div class="map-behavior">
+            <h3>Map behavior:</h3>
+            <div class="buttons">
+              <button class="active" data-map-behavior="free">Free move</button>
+              <button data-map-behavior="centered">Center ISS</button>
+            </div>
+          </div>
+          <div class="map-style">
+            <h3>Map style:</h3>
+            <div class="buttons">
+              <button class="active" data-map-style="m">Roadmap</button>
+              <button data-map-style="p">Terrain</button>
+              <button data-map-style="s">Satellite</button>
+              <button data-map-style="y">Hybrid</button>
+            </div>
+          </div>
+          <div class="unit">
+            <h3>Unit of measurement:</h3>
+            <div class="buttons">
+              <button class="active" data-unit="miles">Miles</button>
+              <button data-unit="kilometers">Kilometers</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="https://dalvanc.com" rel="noopener noreferrer" target="_blank">
+        <span>designed and built by</span>
+        <img src="./assets/dalvanc.png" alt="dalvan c_ logo" />
+      </a>
+    </footer>
+  </body>
+</html>
